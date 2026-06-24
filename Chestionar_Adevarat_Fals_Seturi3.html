@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<title>Adevărat/Fals pe seturi</title>
+<style>
+body{font-family:Arial;max-width:1000px;margin:auto;padding:20px}
+.card{border:1px solid #ccc;padding:20px;border-radius:10px}
+.q{margin-bottom:20px}
+button{margin:3px;padding:8px 15px}
+.result{margin-top:15px}
+</style>
+</head>
+<body>
+<h1>Chestionar Adevărat/Fals</h1>
+<div class="card" id="app"></div>
+
+<script>
+const groups = [{'questions': ['Crossing-over-ul este un fenomen de recombinare intercromozomală.', 'Celulele cu bastonaș din structura retinei au rol în vederea cromatică.', 'Tropismele sunt mișcări orientate ale organelor plantelor determinate de acțiunea unui stimul.'], 'answers': ['F', 'F', 'A']}, {'questions': ['În procesul de fotosinteză, plantele transformă substanțele organice în substanțe', 'anorganice, eliberând oxigen în atmosferă.', 'În timpul inspirației, presiunea aerului din plămânii mamiferelor scade.'], 'answers': ['F', 'F', 'A']}, {'questions': ['Hemiplegia este una din manifestările epilepsiei.', 'Un factor extern care influențează procesul de fotosinteză este concentrația de dioxid de carbon din', 'aer.'], 'answers': ['F', 'F', 'A']}, {'questions': ['La mamifere, receptorii pentru echilibru sunt localizaţi în urechea medie.', 'Hipermetropia este o deficiență senzorială care se corectează cu lentile convergente.', 'Descompunerea apei în  oxigen și hidrogen are loc în faza de întuneric a fotosintezei.'], 'answers': ['F', 'A', 'F']}, {'questions': ['microscopice numite nefroni.', 'Lizozomii sunt componente celulare specifice celulei vegetale.', 'Celulele cu bastonașe sunt chemoreceptori.'], 'answers': ['A', 'F', 'F']}, {'questions': ['Testiculele sunt glandele anexe ale sistemului reproducător mascul.', 'Căile urinare ale mamiferelor sunt reprezentate de rinichi, vezica urinară și uretră.', 'Encefalul și măduva spinării sunt componente ale sistemului nervos central al mamiferelor.'], 'answers': ['F', 'F', 'A']}, {'questions': ['Gonoreea este o boală cu transmitere sexuală cauzată de infecția cu o ciupercă.', 'Androceul florii angiospermelor este alcătuit din totalitatea carpelelor.', 'Rinichii sunt componente ale sistemului excretor al mamiferelor.'], 'answers': ['F', 'F', 'A']}, {'questions': ['La microorganisme, respirația anaerobă se mai numește și fermentație.', 'Rinichii sunt componente ale căilor urinare ale mamiferelor.', 'La mamifere, produșii finali ai digestiei glucidelor sunt aminoacizii.'], 'answers': ['A', 'F', 'F']}, {'questions': ['Tripsina este o enzimă prezentă în sucul pancreatic.', 'Bila produsă de vezica biliară este eliberată în duoden.', 'Vasele lemnoase asigură circulația sevei elaborate.'], 'answers': ['A', 'F', 'F']}, {'questions': ['Rădăcinile plantelor au geotropism pozitiv.', 'Tarsienele, metatarsienele și falangele sunt oase ale scheletului membrului superior al mamiferelor.', 'Țesuturile epiteliale sunt bogat vascularizate.'], 'answers': ['A', 'F', 'F']}, {'questions': ['Lipaza pancreatică transformă amidonul în maltoză.', 'La mamifere, rinichii au în partea convexă hilul renal.', 'Cerebelul mamiferelor are rol în menţinerea echilibrului corpului.'], 'answers': ['F', 'F', 'A']}, {'questions': ['Cariopsa, nuca și achena sunt exemple de fructe uscate întâlnite la angiosperme.', 'Ovarele sunt glandele anexe ale sistemului reproducător femel.', 'Falangele și radiusul sunt oase ale scheletului membrului inferior al omului.'], 'answers': ['A', 'F', 'F']}, {'questions': ['umoarea sticloasă.', 'Cauza sifilisului este infecţia cu o ciupercă.', 'Bila secretată de ficat conţine enzime lipolitice cu rol în emulsionarea grăsimilor.'], 'answers': ['A', 'F', 'F']}, {'questions': ['Plastidele sunt organite celulare comune celulelor vegetale și animale.', 'Alcoolul și tutunul sunt factori de risc pentru sistemul nervos central al omului.', 'Receptorii vizuali sunt celule chemosensibile.'], 'answers': ['F', 'A', 'F']}, {'questions': ['Miopia este o deficiență senzorială corectată cu lentile convergente.', 'Candidoza este o boală cu transmitere sexuală, provocată de o bacterie.', 'Puritatea gameților este una dintre legile mendeliene ale eredității.'], 'answers': ['F', 'F', 'A']}, {'questions': ['Ovulele și spermatozoizii sunt celule haploide.', 'Tripsina, componentă a sucului pancreatic, are rol în digestia chimică a glucidelor.', 'Cantitatea de energie obţinută prin respiraţia aerobă este mai mică decât cantitatea de energie obţinută prin respiraţia anaerobă.'], 'answers': ['A', 'F', 'F']}, {'questions': ['Fotosinteza este un tip de nutriție heterotrofă.', 'Ovarele reprezintă gonadele bărbătești.', 'Mezencefalul este una dintre componentele trunchiului cerebral al mamiferelor.'], 'answers': ['F', 'F', 'A']}, {'questions': ['Veziculele seminale sunt glande anexe ale sistemului reproducător feminin.', 'Bila secretată de ficat conţine enzime cu rol în emulsionarea grăsimilor.', 'În cazul ochiului mamiferelor, celulele fotosensibile din structura retinei fac sinapsă cu neuronii bipolari.'], 'answers': ['F', 'F', 'A']}, {'questions': ['Țesuturile vegetale definitive sunt alcătuite din celule specializate, diferențiate.', 'La mamifere, în timpul inspirației, presiunea aerului din plămâni crește.', 'Peretele celular este o structură specifică celulei animale.'], 'answers': ['A', 'F', 'F']}, {'questions': ['Funcția de relație se realizează cu participarea sistemelor respirator și muscular.', 'Faringele şi laringele sunt segmente ale tubului digestiv.', 'Bacteriile aparţin regnului Monera.'], 'answers': ['F', 'F', 'A']}, {'questions': ['Proteoplastele sunt cromoplaste ce depozitează proteine.', 'Fotosinteza transformă energia solară în energie chimică, care va fi utilizată în respirație.', 'Meristemele primare intercalare asigură creșterea în grosime a rădăcinii și tulpinii.'], 'answers': ['F', 'A', 'F']}];
+let g=0,total=0;
+
+function render(){
+ if(g>=groups.length){
+   document.getElementById('app').innerHTML=`<h2>Test finalizat</h2><h3>Scor final: ${total} / ${groups.length*3}</h3>`;
+   return;
+ }
+ let html=`<h3>Set ${g+1} din ${groups.length}</h3>`;
+ groups[g].questions.forEach((q,i)=>{
+   html+=`<div class="q"><b>${i+1}.</b> ${q}<br>
+   <label><input type="radio" name="q${i}" value="A"> Adevărat</label>
+   <label><input type="radio" name="q${i}" value="F"> Fals</label></div>`;
+ });
+ html+=`<button onclick="check()">Verifică setul</button>
+ <div id="results"></div>`;
+ document.getElementById('app').innerHTML=html;
+}
+
+function check(){
+ let score=0;
+ let out="<h4>Barem pentru acest set</h4><ul>";
+ for(let i=0;i<3;i++) {
+   let sel=document.querySelector(`input[name=q${i}]:checked`);
+   let val=sel?sel.value:"-";
+   let corr=groups[g].answers[i];
+   if(val===corr) score++;
+   out+=`<li>Întrebarea ${i+1}: corect = <b>${corr==="A"?"Adevărat":"Fals"}</b></li>`;
+ }
+ total+=score;
+ out+=`</ul><p><b>Scor set:</b> ${score}/3</p>
+ <p><b>Scor total:</b> ${total}/${(g+1)*3}</p>
+ <button onclick="nextSet()">Setul următor</button>`;
+ document.getElementById('results').innerHTML=out;
+}
+
+function nextSet(){ g++; render(); }
+render();
+</script>
+</body>
+</html>
